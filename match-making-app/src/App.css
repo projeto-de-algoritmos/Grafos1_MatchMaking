@@ -12,3 +12,30 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.App-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.matchmaking-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-input {
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid grey;
+  box-shadow: none;
+  margin-bottom: 8px;
+  min-width: 240px;
+}
+
+.submit-button {
+  margin-top: 1rem;
+  border-radius: 4px;
+  border: 1px solid grey;
+  cursor: pointer;
+}
