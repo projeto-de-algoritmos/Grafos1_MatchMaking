@@ -52,6 +52,6 @@ table, th, td {
   border-collapse: collapse;
 }
 
-.search-result-table {
-  width: 70%;
+.table-container {
+  width: 80%;
 }

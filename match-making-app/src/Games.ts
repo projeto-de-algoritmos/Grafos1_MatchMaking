@@ -6,7 +6,10 @@ interface IGames {
     playerNameMinLength?: number
   },
   extraFields: {
-    [key: string]: string[];
+    [key: string]: {
+      data: string[],
+      equal: boolean
+    };
   }
 };
 
@@ -18,9 +21,36 @@ export const games: IGames[] = [
       playerNameMaxLength: 16,
     },
     extraFields: {
-      ranking: ['Ferro', 'Bronze', 'Prata', 'Ouro', 'Platina', 'Diamante', 'Mestre', 'Grão Mestre', 'Desafiante'],
-      regiao: ['Japanese', 'Korean', 'Chinese', 'Taiwanese', 'Spanish', 'French', 'German', 'Italian', 'Polish', 'Romanian', 'Greek', 'Portuguese', 'Hungarian', 'Russian', 'Turkish'],
-      posicao: ['Top', 'Jg', 'Mid', 'Adc', 'Support']
+      ranking: {
+        data: ['Ferro', 'Bronze', 'Prata', 'Ouro', 'Platina', 'Diamante', 'Mestre', 'Grão Mestre', 'Desafiante'],
+        equal: true,
+      },
+      regiao: {
+        data: [
+          'Brazil (BR)',
+          'Europe Nordic & East (EUNE)',
+          'Europe West (EUW)',
+          'Latin America North (LAN)',
+          'Latin America South (LAS)',
+          'North America (NA)',
+          'Oceania (OCE)',
+          'Russia (RU)',
+          'Turkey (TR)',
+          'Japan (JP)',
+          'Republic of Korea (KR)'
+        ],
+        equal: true,
+      },
+      posicao: {
+        data: [
+          'TOP',
+          'JG',
+          'MID',
+          'ADC',
+          'SUPPORT'
+        ],
+        equal: false
+      }
     }
   },
   {
@@ -29,7 +59,10 @@ export const games: IGames[] = [
       maxPlayers: 3,
     },
     extraFields: {
-      ranking: ['Bronze', 'Prata', 'Ouro', 'Diamante', 'Ametista', 'Esmeralda', 'Rubi', 'Obsidiano']
+      ranking: {
+        data: ['Bronze', 'Prata', 'Ouro', 'Diamante', 'Ametista', 'Esmeralda', 'Rubi', 'Obsidiano'],
+        equal: true
+      }
     }
   }
 ];

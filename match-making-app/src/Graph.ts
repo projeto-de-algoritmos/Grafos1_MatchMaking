@@ -16,36 +16,69 @@ class Node {
   };
 }
 
-const graph: IObjectKeys = {};
+let graph: IObjectKeys = {};
 
 function startGraph() {
-  // Inicializa todos os jogos com entradas extras
-  games.forEach((game) => {
-    graph[game.name.replaceAll(' ', '')] = [];
-    Object.getOwnPropertyNames(game.extraFields).forEach((extraField) => {
-      game.extraFields[extraField].forEach((value) => {
-        insertGraph(game.name.replaceAll(' ', ''), null, [value], extraField);
-      })
+  const storageData = getUpdatedGraph();
+  if (!storageData) {
+    // Inicializa todos os jogos com entradas extras
+    games.forEach((game) => {
+      const gameName = game.name.replaceAll(' ', '');
+      graph[gameName] = [];
+      Object.getOwnPropertyNames(game.extraFields).forEach((extraField) => {
+        game.extraFields[extraField].data.forEach((value) => {
+          let newPlayer = new Node(null, [value], extraField);
+          graph[gameName].push(newPlayer);
+        });
+      });
     });
-  });
+    window.localStorage.setItem("@Graph", JSON.stringify(graph));
+  } else {
+    graph = storageData;
+  }
 };
 
-function insertGraph(game: string, playerName: string | null, playerData: string[], nodeType: string) {
-  let newPlayer = new Node(playerName, playerData, nodeType);
-  graph[game].push(newPlayer);
+function insertGraph(game: string, playerName: string, playerData: string[], nodeType: string) {
+  const updatedGraph = getUpdatedGraph();
+  if (updatedGraph) {
+    let newPlayer = new Node(playerName, playerData, nodeType);
+    updatedGraph[game].push(newPlayer);
+    graph = updatedGraph;
+    window.localStorage.setItem("@Graph", JSON.stringify(graph));
+    return newPlayer;
+  }
+  return null;
 };
 
-function search(game: string, data: string[], playerName: string) {
-  return graph[game]?.filter((u) => {
-    let found = true;
-    if (u.nodeType === "player" && u.name !== playerName) {
-      for (let i = 0; (i < u.adjacents.length && found); i++) {
-        found = data.includes(u.adjacents[i])
+function search(game: string, searchParams: Array<Array<string>>, playerName: string) {
+  graph = getUpdatedGraph();
+  if (graph) {
+    const results = graph[game]?.filter((u: any) => {
+      let found = true;
+      if (u.nodeType === "player" && u.name !== playerName) {
+        for (let i = 0; (i < u.adjacents.length && found); i++) {
+          if (searchParams[i].constructor === String) {
+            found = searchParams[i] === u.adjacents[i]
+          } else {
+            found = searchParams[i].includes(u.adjacents[i])
+            if (found) {
+              searchParams[i].splice(searchParams[i].indexOf(u.adjacents[i]), 1);
+            }
+          }
+        };
+        return found;
       };
-      return found;
-    };
-    return false;
-  });
+      return false;
+    });
+    return results;
+  }
+  return [];
+};
+
+function getUpdatedGraph() {
+  const storageData = window.localStorage.getItem("@Graph");
+  if (storageData) return JSON.parse(storageData);
+  return null;
 }
 
 startGraph();
