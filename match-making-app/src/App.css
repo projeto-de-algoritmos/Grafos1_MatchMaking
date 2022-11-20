@@ -1,27 +1,37 @@
 .App {
-  text-align: center;
+  --main-color: #102030;
+  --scnd-color: #0e5ebe;
+  --thrd-color: #152535;
+  --margin-form: 1rem;
+  --padding-form: 2rem;
+  color: aliceblue;
+  margin: 0;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: var(--main-color);
+  height: 10vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-container {
+  margin: 0;
+  padding: 0;
+  height: 90vh;
+  background-color: var(--thrd-color);
   display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
 }
 
 .matchmaking-form {
+  margin: var(--margin-form);
+  padding: var(--padding-form);
+  border-radius: 1rem;
+  background-color: var(--scnd-color);
+  width: 30vw;
+
   display: flex;
   flex-direction: column;
 }
@@ -33,6 +43,7 @@
   box-shadow: none;
   margin-bottom: 8px;
   min-width: 240px;
+  width: 100%;
 }
 
 .submit-button {
@@ -40,6 +51,14 @@
   border-radius: 4px;
   border: 1px solid grey;
   cursor: pointer;
+}
+
+.table-container {
+  margin: var(--margin-form);
+  padding: var(--padding-form);
+  background-color: var(--scnd-color);
+  width: 70vw;
+  border-radius: 1rem;
 }
 
 table {

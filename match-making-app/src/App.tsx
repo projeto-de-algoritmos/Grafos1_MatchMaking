@@ -171,7 +171,6 @@ function App() {
           ) : null}
         </div>
       </div>
-      <footer></footer>
     </div>
   );
 }
