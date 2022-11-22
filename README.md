@@ -19,7 +19,7 @@ O objetivo do projeto, é criar uma aplicação web, que utiliza de Grafos, para
 
 ## Vídeo de Apresentação
 
-![Apresentação](/Grafo1.mp4])
+![Apresentação](/Grafo1.mp4)
 
 ## Instalação 
 **Linguagem**: Typescript<br>
