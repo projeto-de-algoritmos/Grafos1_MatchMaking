@@ -1,19 +1,25 @@
 # Match Making
 
-**Número da Lista**: 23<br>
+**Número da Dupla**: 23<br>
 **Conteúdo da Disciplina**: Grafo 1<br>
 
 ## Alunos
-|Matrícula | Aluno |
+| Matrícula | Aluno |
 | -- | -- |
 | 18/0105256  |  Lucas da Cunha Andrade |
 | 18/0027352  |  Rodrigo Carvalho dos Santos |
 
 ## Sobre 
-O objetivo do projeto, é criar uma aplicação web, que utiliza de Grafos, para um jogador fazer busca de outros jogadores com o nível próximo ao do jogador.
+O objetivo do projeto, é criar uma aplicação web, que utiliza de Grafos, para um jogador fazer busca de outros jogadores com o ranking próximo ao do jogador.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![Carregando o MatchMaking](/screenshot_1.jpg)
+![Tabela do time Formado](/screenshot_2.jpg)
+![Local Storage](/screenshot_3.jpg)
+
+## Vídeo de Apresentação
+
+![Apresentação](/Grafo1.mp4])
 
 ## Instalação 
 **Linguagem**: Typescript<br>
